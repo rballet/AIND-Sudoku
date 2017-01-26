@@ -90,6 +90,7 @@ def grid_values(grid):
         A grid in dictionary form
             Keys: The boxes, e.g., 'A1'
             Values: The value in each box, e.g., '8'. If the box has no value, then the value will be '123456789'.
+	(Copied from solution code from class 10 from Lecture 3)		
     """
     chars = []
     digits = '123456789'
@@ -106,6 +107,7 @@ def display(values):
     Display the values as a 2-D grid.
     Args:
         values(dict): The sudoku in dictionary form
+	(Copied from solution code from class 10 from Lecture 3)
     """
     width = 1+max(len(values[s]) for s in boxes)
     line = '+'.join(['-'*(width*3)]*3)
@@ -120,6 +122,7 @@ def eliminate(values):
     Go through all the boxes, and whenever there is a box with a value, eliminate this value from the values of all its peers.
     Input: A sudoku in dictionary form.
     Output: The resulting sudoku in dictionary form.
+	(Modified from solution code from class 10 from Lecture 3)
     """
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     for box in solved_values:
@@ -133,6 +136,7 @@ def only_choice(values):
     Go through all the units, and whenever there is a unit with a value that only fits in one box, assign the value to this box.
     Input: A sudoku in dictionary form.
     Output: The resulting sudoku in dictionary form.
+	(Modified from solution code from class 10 from Lecture 3)
     """
     for unit in unitlist:
         for digit in '123456789':
@@ -146,6 +150,7 @@ def reduce_puzzle(values):
 	Reduce puzzle using eliminate, naked twins and only choice strategies
 	Input: A sudoku in dictionary form.
 	Output: The resulting sudoku in dictionary form. False if no solution exists.
+	(Modified from solution code from class 10 from Lecture 3)
 	"""
 	solved_values = [box for box in values.keys() if len(values[box]) == 1]
 	stalled = False
@@ -173,7 +178,12 @@ def reduce_puzzle(values):
 	return values
 
 def search(values):
-    "Depth-first search."
+    '''
+	Depth-first search
+	Input: A sudoku in dictionary form.
+	Output: The resulting sudoku in dictionary form. False if no solution exists.
+	(Modified from solution code from class 10 from Lecture 3)
+	'''
 	# Reduce puzzle with constraint propagation and naked twins
     values = reduce_puzzle(values)
 	
